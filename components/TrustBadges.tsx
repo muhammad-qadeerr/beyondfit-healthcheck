@@ -19,7 +19,7 @@ export function TrustBadges({ language }: { language: Language }) {
   const items = english ? englishItems : dutchItems;
 
   return (
-    <section className="process" id="health-check" aria-labelledby="process-title">
+    <section className="process" id="health-check" data-reveal aria-labelledby="process-title">
       <div className="process__heading">
         <p className="eyebrow eyebrow--dark">{english ? "The BeyondFit approach" : "De BeyondFit aanpak"}</p>
         <h2 id="process-title">{english ? <>Know where you stand.<br /><em>Move forward with direction.</em></> : <>Weet waar je staat.<br /><em>Ga verder met richting.</em></>}</h2>

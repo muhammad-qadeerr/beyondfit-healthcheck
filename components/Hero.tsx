@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Activity, ArrowDown, ArrowRight } from "lucide-react";
 
 import type { Language } from "@/components/LandingPage";
@@ -14,8 +15,7 @@ export function Hero({ language, onLanguageChange }: HeroProps) {
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero__topbar">
         <a className="brand-mark" href="#top" aria-label="BeyondFit home">
-          <span className="brand-mark__beyond">BEYOND</span><span className="brand-mark__fit">FIT</span>
-          <Activity aria-hidden="true" />
+          <Image src="/beyondfit-wordmark.png" alt="BeyondFit" width={303} height={139} priority />
         </a>
         <nav aria-label={english ? "Main navigation" : "Hoofdnavigatie"}>
           <a href="#health-check">{english ? "The Health Check" : "De Health Check"}</a>
