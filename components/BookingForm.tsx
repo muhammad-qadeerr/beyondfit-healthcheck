@@ -50,7 +50,7 @@ const benefits = {
 export function BookingForm({ language }: { language: Language }) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<FieldErrors>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "demo" | "error">("idle");
   const english = language === "en";
 
   useEffect(() => {
@@ -111,26 +111,44 @@ export function BookingForm({ language }: { language: Language }) {
         throw new Error("Request failed");
       }
 
-      setStatus("success");
+      const result = (await response.json()) as { mode?: "demo" | "live" };
+      setStatus(result.mode === "demo" ? "demo" : "success");
     } catch {
       setStatus("error");
     }
   }
 
-  if (status === "success") {
+  if (status === "success" || status === "demo") {
+    const demo = status === "demo";
     return (
       <section className="booking-card booking-card--success" aria-live="polite">
         <div className="success-icon"><CheckCircle2 aria-hidden="true" size={34} /></div>
-        <p className="booking-card__step">{english ? "Request received" : "Aanvraag ontvangen"}</p>
-        <h2>{english ? "Great, your Health Check is ready to get started." : "Mooi, je Health Check staat in de startblokken."}</h2>
-        <p>{english ? "We will contact you soon to choose a suitable time together." : "We nemen snel contact met je op om samen een geschikt moment te kiezen."}</p>
+        <p className="booking-card__step">
+          {demo
+            ? (english ? "Preview submission" : "Testaanvraag")
+            : (english ? "Request received" : "Aanvraag ontvangen")}
+        </p>
+        <h2>
+          {demo
+            ? (english ? "The form works correctly." : "Het formulier werkt correct.")
+            : (english ? "Great, your Health Check is ready to get started." : "Mooi, je Health Check staat in de startblokken.")}
+        </h2>
+        <p>
+          {demo
+            ? (english ? "This is demo mode. No details were sent to a CRM." : "Dit is de demomodus. Er zijn geen gegevens naar een CRM verstuurd.")
+            : (english ? "We will contact you soon to choose a suitable time together." : "We nemen snel contact met je op om samen een geschikt moment te kiezen.")}
+        </p>
         <div className="success-rule" />
-        <p className="success-note">{english ? "Keep an eye on your phone and inbox." : "Houd je telefoon en inbox in de gaten."}</p>
+        <p className="success-note">
+          {demo
+            ? (english ? "Enable live mode after connecting Pipedrive." : "Schakel live-modus in na de Pipedrive-koppeling.")
+            : (english ? "Keep an eye on your phone and inbox." : "Houd je telefoon en inbox in de gaten.")}
+        </p>
       </section>
     );
   }
 
-  const privacyUrl = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL || "https://beyondfit.nl/privacybeleid";
+  const privacyUrl = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL || "https://beyondfit.nl/privacyverklaring/";
 
   return (
     <section className="booking-card" aria-labelledby="booking-title">

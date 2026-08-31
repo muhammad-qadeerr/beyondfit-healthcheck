@@ -338,3 +338,152 @@ body.modal-open { overflow: hidden; }
   .hero__topbar, .hero__content .eyebrow, .hero__content h1, .hero__copy, .hero__actions, .hero__signature { animation: none; }
   .hero__scroll svg { animation: none; }
 }
+
+/* Refined interaction layer */
+:root { --page-progress: 0; --hero-shift: 0px; }
+
+.page-progress {
+  position: fixed;
+  z-index: 200;
+  inset: 0 0 auto;
+  height: 3px;
+  pointer-events: none;
+  background: var(--orange);
+  transform: scaleX(var(--page-progress));
+  transform-origin: left;
+}
+
+.hero { background-position: center calc(50% + var(--hero-shift)); }
+.hero nav > a:not(.nav-cta) { position: relative; }
+.hero nav > a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .25s ease;
+}
+.hero nav > a:not(.nav-cta):hover::after,
+.hero nav > a:not(.nav-cta):focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+.process-item { opacity: 0; transform: translateY(20px); }
+.process.is-visible .process-item { animation: process-arrive .58s cubic-bezier(.2,.75,.25,1) forwards; }
+.process.is-visible .process-item:nth-child(2) { animation-delay: .1s; }
+.process.is-visible .process-item:nth-child(3) { animation-delay: .22s; }
+.process.is-visible .process-item:nth-child(4) { animation-delay: .34s; }
+.process-item:hover { box-shadow: inset 0 -2px var(--orange); }
+
+.testimonial-reel { scrollbar-width: none; }
+.testimonial-reel::-webkit-scrollbar { display: none; }
+
+.carousel-controls button:active,
+.primary-link:active,
+.nav-cta:active,
+.submit-button:active:not(:disabled) { transform: scale(.97); }
+
+.booking-card {
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid rgba(119,101,94,.16);
+  background: rgba(255,255,255,.42);
+  box-shadow: 0 26px 70px rgba(51,43,40,.08);
+}
+.field label { transition: color .2s ease, transform .2s ease; }
+.field:focus-within label { color: var(--orange); transform: translateY(-2px); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.review-modal a:focus-visible,
+.review-modal button:focus-visible,
+.hero a:focus-visible,
+.hero button:focus-visible { outline-color: white; }
+
+@keyframes process-arrive {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .booking-card { padding: 28px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { background-position: center; }
+  .process-item { opacity: 1; transform: none; animation: none !important; }
+  .testimonial-card { opacity: 1; transform: none; }
+}
+
+/* Continuously moving testimonial filmstrip */
+.testimonial-reel--marquee {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-left: clamp(24px, 7vw, 112px);
+  padding: 0;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange) rgba(255,255,255,.12);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, black 3%, black 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, black 3%, black 97%, transparent 100%);
+}
+
+.testimonial-reel--marquee::-webkit-scrollbar {
+  display: block;
+  height: 7px;
+}
+
+.testimonial-reel--marquee::-webkit-scrollbar-track { background: rgba(255,255,255,.12); }
+.testimonial-reel--marquee::-webkit-scrollbar-thumb { background: var(--orange); }
+
+.testimonial-track {
+  width: max-content;
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0 34px;
+  animation: testimonial-marquee 72s linear infinite;
+  will-change: transform;
+}
+
+.testimonial-cycle {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding-right: 18px;
+}
+
+.testimonial-cycle .testimonial-card {
+  width: clamp(235px, 21vw, 330px);
+  flex: 0 0 clamp(235px, 21vw, 330px);
+  opacity: 1;
+  transform: none;
+}
+
+.testimonial-reel--marquee:hover .testimonial-track,
+.testimonial-reel--marquee:focus-within .testimonial-track,
+.testimonial-reel--marquee:active .testimonial-track,
+.modal-open .testimonial-track { animation-play-state: paused; }
+
+@keyframes testimonial-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .testimonial-reel--marquee { margin-left: 21px; }
+  .testimonial-track { animation-duration: 58s; }
+  .testimonial-cycle { gap: 13px; padding-right: 13px; }
+  .testimonial-cycle .testimonial-card { width: 70vw; flex-basis: 70vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-reel--marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .testimonial-track { animation: none; }
+  .testimonial-cycle[aria-hidden="true"] { display: none; }
+}

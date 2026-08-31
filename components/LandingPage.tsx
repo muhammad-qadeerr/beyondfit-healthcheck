@@ -34,7 +34,26 @@ export function LandingPage() {
     );
 
     document.querySelectorAll("[data-reveal]").forEach((element) => revealObserver.observe(element));
-    return () => revealObserver.disconnect();
+
+    let animationFrame = 0;
+    const updateScrollEffects = () => {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => {
+        const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollRange > 0 ? window.scrollY / scrollRange : 0;
+        document.documentElement.style.setProperty("--page-progress", String(progress));
+        document.documentElement.style.setProperty("--hero-shift", `${Math.min(window.scrollY * 0.035, 24)}px`);
+      });
+    };
+
+    updateScrollEffects();
+    window.addEventListener("scroll", updateScrollEffects, { passive: true });
+
+    return () => {
+      revealObserver.disconnect();
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", updateScrollEffects);
+    };
   }, []);
 
   function changeLanguage(nextLanguage: Language) {
@@ -47,6 +66,7 @@ export function LandingPage() {
 
   return (
     <main id="top">
+      <div className="page-progress" aria-hidden="true" />
       <Hero language={language} onLanguageChange={changeLanguage} />
       <section className="proof-strip" aria-label={english ? "Health Check benefits" : "Voordelen van de Health Check"}>
         <div className="proof-strip__item"><Star aria-hidden="true" fill="currentColor" /><span><strong>4.9 / 5</strong>{english ? "Client appreciation" : "Waardering van klanten"}</span></div>

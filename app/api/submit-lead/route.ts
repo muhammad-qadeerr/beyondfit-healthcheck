@@ -23,6 +23,11 @@ export async function POST(request: Request) {
     );
   }
 
+  const submissionMode = process.env.LEAD_SUBMISSION_MODE === "live" ? "live" : "demo";
+  if (submissionMode === "demo") {
+    return NextResponse.json({ success: true, mode: "demo" });
+  }
+
   try {
     await createPipedriveLead(parsed.data);
   } catch (error) {
@@ -31,7 +36,11 @@ export async function POST(request: Request) {
       source: parsed.data.utm_source,
       campaign: parsed.data.utm_campaign,
     });
+    return NextResponse.json(
+      { error: "De aanvraag kon niet worden verwerkt. Probeer het later opnieuw." },
+      { status: 502 },
+    );
   }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, mode: "live" });
 }
