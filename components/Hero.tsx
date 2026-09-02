@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Activity, ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Check } from "lucide-react";
 
+import { CalendlyLink } from "@/components/CalendlyBooking";
 import type { Language } from "@/components/LandingPage";
 
 type HeroProps = {
@@ -24,29 +25,35 @@ export function Hero({ language, onLanguageChange }: HeroProps) {
             <button type="button" className={language === "nl" ? "is-active" : ""} onClick={() => onLanguageChange("nl")} aria-pressed={language === "nl"}>NL</button>
             <button type="button" className={language === "en" ? "is-active" : ""} onClick={() => onLanguageChange("en")} aria-pressed={language === "en"}>EN</button>
           </div>
-          <a className="nav-cta" href="#boeken">{english ? "Book for free" : "Gratis boeken"} <ArrowRight aria-hidden="true" size={15} /></a>
+          <CalendlyLink className="nav-cta">{english ? "Book for free" : "Gratis boeken"} <ArrowRight aria-hidden="true" size={15} /></CalendlyLink>
         </nav>
       </div>
 
       <div className="hero__content">
-        <p className="eyebrow">{english ? "Health that goes further" : "Gezondheid die verder gaat"}</p>
+        <p className="eyebrow">{english ? "BeyondFit Health Performance Studio" : "BeyondFit Health Performance Studio"}</p>
         <h1 id="hero-title">
-          {english ? <>Fit is not a number.<br />It is how you <em>live beyond.</em></> : <>Fit is geen getal.<br />Het is hoe jij <em>verder leeft.</em></>}
+          {english ? <>Your career has a strategy.<br /><em>Does your health?</em></> : <>Je carrière heeft een strategie.<br /><em>Je gezondheid ook?</em></>}
         </h1>
         <p className="hero__copy">
           {english
-            ? "BeyondFit helps you understand what your body needs. Personal, measurable and without quick promises. Start with a free Health Check™ and discover where you stand today."
-            : "BeyondFit helpt je begrijpen wat jouw lichaam nodig heeft. Persoonlijk, meetbaar en zonder snelle beloftes. Start met een gratis Health Check™ en ontdek waar jij nu staat."}
+            ? "You can lead a team, run a business and take care of a family. But when the week becomes unpredictable, your own health is still the first commitment you cancel."
+            : "Je kunt een team leiden, een bedrijf runnen en voor een gezin zorgen. Maar zodra je week onvoorspelbaar wordt, is je eigen gezondheid nog steeds de eerste afspraak die je schrapt."}
+        </p>
+        <p className="hero__copy hero__copy--strong">
+          {english
+            ? "The BeyondFit Health Check™ shows where you stand today—and what deserves your attention next."
+            : "De BeyondFit Health Check™ laat zien waar je vandaag staat—en wat als volgende jouw aandacht verdient."}
         </p>
         <div className="hero__actions">
-          <a className="primary-link" href="#boeken">{english ? "Book your free Health Check" : "Boek je gratis Health Check"} <ArrowRight aria-hidden="true" size={18} /></a>
-          <a className="hero__scroll" href="#health-check">{english ? "Discover BeyondFit" : "Ontdek BeyondFit"} <ArrowDown aria-hidden="true" size={18} /></a>
+          <CalendlyLink className="primary-link">{english ? "Book your complimentary Health Check" : "Boek je gratis Health Check"} <ArrowRight aria-hidden="true" size={18} /></CalendlyLink>
+          <a className="hero__scroll" href="#health-check">{english ? "See what is included" : "Bekijk wat je krijgt"} <ArrowDown aria-hidden="true" size={18} /></a>
         </div>
-      </div>
-
-      <div className="hero__signature" aria-label={english ? "BeyondFit, beyond fit" : "BeyondFit, verder dan fit"}>
-        <Activity aria-hidden="true" />
-        <span>{english ? "beyond fit" : "verder dan fit"}</span>
+        <ul className="hero__facts" aria-label={english ? "Health Check details" : "Details van de Health Check"}>
+          {(english
+            ? ["15 minutes", "InBody scan", "Personal health review", "Clear next step"]
+            : ["15 minuten", "InBody-scan", "Persoonlijke gezondheidsreview", "Heldere volgende stap"]
+          ).map((item) => <li key={item}><Check aria-hidden="true" size={14} />{item}</li>)}
+        </ul>
       </div>
     </section>
   );

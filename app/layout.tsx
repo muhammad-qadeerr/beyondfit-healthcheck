@@ -4,9 +4,9 @@ import "@fontsource/cormorant-garamond/600.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Gratis Health Check | BeyondFit",
+  title: "Health Check voor drukke professionals | BeyondFit",
   description:
-    "Ontdek in 15 minuten waar je staat met een InBody-meting en persoonlijk advies van BeyondFit.",
+    "Voor drukke professionals die alles draaiende houden behalve hun eigen gezondheid. Krijg helder inzicht en een realistische volgende stap bij BeyondFit Amsterdam.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

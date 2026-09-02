@@ -1,17 +1,20 @@
-import { BarChart3, ScanLine, UserRoundCheck } from "lucide-react";
+import { BarChart3, MessageCircleMore, ScanLine, UserRoundCheck } from "lucide-react";
 
+import { CalendlyLink } from "@/components/CalendlyBooking";
 import type { Language } from "@/components/LandingPage";
 
 const dutchItems = [
-  { icon: ScanLine, number: "01", title: "Meten", copy: "Een InBody-scan brengt onder meer spiermassa, vetpercentage en balans in beeld." },
-  { icon: BarChart3, number: "02", title: "Begrijpen", copy: "Je coach vertaalt de cijfers naar heldere inzichten die passen bij jouw situatie." },
-  { icon: UserRoundCheck, number: "03", title: "Vooruitkijken", copy: "Je vertrekt met een concrete eerste stap. Zonder verplichtingen, zonder verkooppraat." },
+  { icon: ScanLine, number: "01", title: "Inzicht in je lichaam", copy: "Een InBody-scan geeft een helder beeld van je lichaamssamenstelling, spiermassa en vetpercentage." },
+  { icon: MessageCircleMore, number: "02", title: "Persoonlijke review", copy: "We bespreken je leefstijl, routine, energie en wat je op dit moment mogelijk tegenhoudt." },
+  { icon: BarChart3, number: "03", title: "Focus bepalen", copy: "Samen brengen we in kaart welke onderdelen van je gezondheid nu de meeste aandacht verdienen." },
+  { icon: UserRoundCheck, number: "04", title: "Realistische vervolgstap", copy: "Je vertrekt met een duidelijke eerste stap die past bij jouw agenda en echte leven." },
 ];
 
 const englishItems = [
-  { icon: ScanLine, number: "01", title: "Measure", copy: "An InBody scan reveals muscle mass, body fat percentage and physical balance." },
-  { icon: BarChart3, number: "02", title: "Understand", copy: "Your coach translates the numbers into clear insights tailored to your situation." },
-  { icon: UserRoundCheck, number: "03", title: "Move forward", copy: "You leave with a concrete first step. No obligations and no sales pitch." },
+  { icon: ScanLine, number: "01", title: "Understand your body", copy: "An InBody scan gives you a clear view of body composition, muscle mass and body fat." },
+  { icon: MessageCircleMore, number: "02", title: "Personal review", copy: "We discuss your lifestyle, routine, energy and what may currently be holding you back." },
+  { icon: BarChart3, number: "03", title: "Identify your focus", copy: "Together, we identify which areas of your health deserve attention now." },
+  { icon: UserRoundCheck, number: "04", title: "A realistic next step", copy: "You leave with a clear first step that works with your schedule and real life." },
 ];
 
 export function TrustBadges({ language }: { language: Language }) {
@@ -21,9 +24,9 @@ export function TrustBadges({ language }: { language: Language }) {
   return (
     <section className="process" id="health-check" data-reveal aria-labelledby="process-title">
       <div className="process__heading">
-        <p className="eyebrow eyebrow--dark">{english ? "The BeyondFit approach" : "De BeyondFit aanpak"}</p>
-        <h2 id="process-title">{english ? <>Know where you stand.<br /><em>Move forward with direction.</em></> : <>Weet waar je staat.<br /><em>Ga verder met richting.</em></>}</h2>
-        <p>{english ? "The free Health Check™ is your personal baseline: fifteen minutes that reveal what numbers alone cannot tell you." : "De gratis Health Check™ is jouw persoonlijke nulmeting: een kwartier dat helder maakt wat cijfers alleen niet vertellen."}</p>
+        <p className="eyebrow eyebrow--dark">{english ? "More than a body scan" : "Meer dan een bodyscan"}</p>
+        <h2 id="process-title">{english ? <>Clarity about where you are.<br /><em>Direction for what comes next.</em></> : <>Helderheid over waar je staat.<br /><em>Richting voor wat volgt.</em></>}</h2>
+        <p>{english ? "You do not leave with another generic plan. You leave knowing what matters most for your body, routine and demanding life right now." : "Je vertrekt niet met het zoveelste generieke plan. Je weet wat nu het belangrijkst is voor jouw lichaam, routine en drukke leven."}</p>
       </div>
       <div className="process__grid">
         {items.map(({ icon: Icon, number, title, copy }) => (
@@ -35,8 +38,8 @@ export function TrustBadges({ language }: { language: Language }) {
         ))}
       </div>
       <div className="process__cta">
-        <p><strong>{english ? "15 minutes." : "15 minuten."}</strong> {english ? "No obligations. A clear starting point." : "Geen verplichtingen. Wel een helder startpunt."}</p>
-        <a href="#boeken">{english ? "Plan my Health Check" : "Plan mijn Health Check"}</a>
+        <p><strong>{english ? "Complimentary for new clients." : "Gratis voor nieuwe cliënten."}</strong> {english ? "No pressure. Just useful insight." : "Geen druk. Wel waardevol inzicht."}</p>
+        <CalendlyLink>{english ? "Book my Health Check" : "Boek mijn Health Check"}</CalendlyLink>
       </div>
     </section>
   );

@@ -32,18 +32,18 @@ const initialValues: FormValues = {
 
 const benefits = {
   nl: [
-    "Je lichaamssamenstelling, spiermassa en vetpercentage",
-    "Je leefstijl en huidige routine",
-    "Samen je persoonlijke resultaten doornemen",
-    "In kaart brengen waar je aandacht aan kunt geven",
-    "Een helder advies voor je volgende stap",
+    "Ontdek wat je lichaam je vandaag vertelt",
+    "Bespreek waar je energie, routine of herstel vastloopt",
+    "Krijg professionele context bij je persoonlijke resultaten",
+    "Bepaal wat nu echt jouw aandacht verdient",
+    "Vertrek met een realistische volgende stap",
   ],
   en: [
-    "Your body composition, muscle mass and body fat percentage",
-    "Your lifestyle and current routine",
-    "Reviewing your personal results together",
-    "Identifying where to focus your attention",
-    "Clear advice for your next step",
+    "Discover what your body is telling you today",
+    "Discuss where your energy, routine or recovery breaks down",
+    "Get professional context around your personal results",
+    "Identify what genuinely deserves your attention now",
+    "Leave with a realistic next step",
   ],
 };
 
@@ -152,8 +152,8 @@ export function BookingForm({ language }: { language: Language }) {
 
   return (
     <section className="booking-card" aria-labelledby="booking-title">
-      <p className="booking-card__step">{english ? "No obligation · 15 minutes" : "Vrijblijvend · 15 minuten"}</p>
-      <h2 id="booking-title">{english ? <>Book your free<br /><em>Health Check™</em></> : <>Boek je gratis<br /><em>Health Check™</em></>}</h2>
+      <p className="booking-card__step">{english ? "Complimentary · 15 minutes · Amsterdam West" : "Gratis · 15 minuten · Amsterdam West"}</p>
+      <h2 id="booking-title">{english ? <>Book your complimentary<br /><em>Health Check™</em></> : <>Boek je gratis<br /><em>Health Check™</em></>}</h2>
 
       <ul className="benefit-list">
         {benefits[language].map((benefit) => (
@@ -200,7 +200,7 @@ export function BookingForm({ language }: { language: Language }) {
         {status === "error" && <p className="form-error" role="alert">{english ? "Something went wrong. Please try again." : "Er ging iets mis. Probeer het nog een keer."}</p>}
 
         <button className="submit-button" type="submit" disabled={!values.consent || status === "submitting"}>
-          <span>{status === "submitting" ? (english ? "Please wait..." : "Even geduld...") : (english ? "Book my free Health Check" : "Boek mijn gratis Health Check")}</span>
+          <span>{status === "submitting" ? (english ? "Please wait..." : "Even geduld...") : (english ? "Book my complimentary Health Check" : "Boek mijn gratis Health Check")}</span>
           <ArrowRight aria-hidden="true" size={20} />
         </button>
 

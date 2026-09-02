@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play, X } from "lucide-react";
 import Image from "next/image";
 
+import { CalendlyLink } from "@/components/CalendlyBooking";
 import type { Language } from "@/components/LandingPage";
 
 const testimonials = [
@@ -60,11 +61,11 @@ export function Testimonials({ language }: { language: Language }) {
     <section className="testimonials" id="ervaringen" data-reveal aria-labelledby="testimonials-title">
       <div className="testimonials__heading">
         <div>
-          <p className="eyebrow">{english ? "Real stories" : "Echte verhalen"}</p>
-          <h2 id="testimonials-title">{english ? <>They went <em>before you.</em></> : <>Zij gingen je <em>voor.</em></>}</h2>
+          <p className="eyebrow">{english ? "Real BeyondFit people" : "Echte BeyondFit-mensen"}</p>
+          <h2 id="testimonials-title">{english ? <>Health that works in <em>real life.</em></> : <>Gezondheid die werkt in <em>het echte leven.</em></>}</h2>
         </div>
         <div className="testimonials__aside">
-          <p>{english ? "No before-and-after promises. Just people sharing what personal attention and insight changed for them." : "Geen voor-en-na-beloftes. Wel mensen die vertellen wat persoonlijke aandacht en inzicht voor hen heeft veranderd."}</p>
+          <p>{english ? "No influencer culture or quick-fix promises. Hear how personal coaching helped real people build energy, strength and consistency." : "Geen influencercultuur of snelle beloftes. Hoor hoe persoonlijke coaching echte mensen hielp met energie, kracht en consistentie."}</p>
         </div>
       </div>
 
@@ -105,7 +106,7 @@ export function Testimonials({ language }: { language: Language }) {
       </div>
       <div className="reel-footer">
         <p>{english ? "10 honest stories. One personal approach." : "10 eerlijke verhalen. Een persoonlijke aanpak."}</p>
-        <a href="#boeken">{english ? "Experience it yourself" : "Ervaar het zelf"}<ArrowRight aria-hidden="true" size={16} /></a>
+        <CalendlyLink>{english ? "Experience it yourself" : "Ervaar het zelf"}<ArrowRight aria-hidden="true" size={16} /></CalendlyLink>
       </div>
 
       {activeVideo && (
