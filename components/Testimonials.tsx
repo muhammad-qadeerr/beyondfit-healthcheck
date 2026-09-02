@@ -87,11 +87,12 @@ export function Testimonials({ language }: { language: Language }) {
                     aria-label={`${english ? "Play client story" : "Speel klantervaring af"} ${index + 1}`}
                   >
                     <Image
-                      src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+                      src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`}
                       alt=""
-                      width={480}
-                      height={360}
+                      width={1280}
+                      height={720}
                       sizes="(max-width: 640px) 70vw, 330px"
+                      quality={90}
                     />
                     <span className="testimonial-card__number">{String(index + 1).padStart(2, "0")}</span>
                     <span className="testimonial-card__shade" />

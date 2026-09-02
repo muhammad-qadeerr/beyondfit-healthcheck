@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { ArrowRight, BatteryCharging, CalendarCheck2, Clock3, Dumbbell, HeartPulse, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 
-import { BookingForm } from "@/components/BookingForm";
 import { CalendlyLink, CalendlyWidget } from "@/components/CalendlyBooking";
 import { Hero } from "@/components/Hero";
+import { StudioGallery } from "@/components/StudioGallery";
 import { Testimonials } from "@/components/Testimonials";
 import { TrustBadges } from "@/components/TrustBadges";
 
@@ -94,6 +94,7 @@ export function LandingPage() {
           ))}
         </div>
       </section>
+      <StudioGallery language={language} />
       <section className="strategy-section" data-reveal aria-labelledby="strategy-title">
         <p className="eyebrow">{english ? "The core difference" : "Het verschil"}</p>
         <h2 id="strategy-title">
@@ -151,7 +152,6 @@ export function LandingPage() {
               : "Je gezondheid bepaalt hoe je presteert, leidinggeeft en er bent voor de mensen die op je rekenen. Begin met inzicht in waar je staat."}
           </p>
         </div>
-        <div className="booking-panel"><BookingForm language={language} /></div>
       </section>
       <CalendlyWidget language={language} />
       <footer>
