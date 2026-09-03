@@ -141,7 +141,7 @@ export function BookingForm({ language }: { language: Language }) {
         <div className="success-rule" />
         <p className="success-note">
           {demo
-            ? (english ? "Enable live mode after connecting Pipedrive." : "Schakel live-modus in na de Pipedrive-koppeling.")
+            ? (english ? "Connect the final submission destination before launch." : "Koppel voor livegang de definitieve bestemming voor aanvragen.")
             : (english ? "Keep an eye on your phone and inbox." : "Houd je telefoon en inbox in de gaten.")}
         </p>
       </section>
