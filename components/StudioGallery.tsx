@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { Language } from "@/components/LandingPage";
 
@@ -100,6 +100,20 @@ export function StudioGallery({ language }: { language: Language }) {
   const activeImage = activeCategory.images[activeImageIndex];
   const english = language === "en";
 
+  useEffect(() => {
+    categories.forEach((category) => {
+      const image = new window.Image();
+      image.src = category.images[0].src;
+    });
+  }, []);
+
+  function preloadCategory(category: StudioCategory) {
+    category.images.forEach(({ src }) => {
+      const image = new window.Image();
+      image.src = src;
+    });
+  }
+
   return (
     <section className="studio-atmosphere" data-reveal aria-labelledby="studio-title">
       <div className="studio-atmosphere__intro">
@@ -126,6 +140,8 @@ export function StudioGallery({ language }: { language: Language }) {
               aria-controls={`studio-panel-${category.id}`}
               aria-selected={active}
               className={active ? "is-active" : ""}
+              onMouseEnter={() => preloadCategory(category)}
+              onFocus={() => preloadCategory(category)}
               onClick={() => {
                 setActiveCategoryId(category.id);
                 setActiveImageIndex(0);
@@ -154,7 +170,7 @@ export function StudioGallery({ language }: { language: Language }) {
             alt={activeImage.alt[language]}
             fill
             sizes="(max-width: 760px) 100vw, 58vw"
-            quality={90}
+            unoptimized
           />
         </figure>
         <div className="studio-gallery__supporting">
@@ -166,7 +182,7 @@ export function StudioGallery({ language }: { language: Language }) {
                 onClick={() => setActiveImageIndex(index)}
                 aria-label={english ? "Show this photo as the large image" : "Toon deze foto als grote afbeelding"}
               >
-                <Image src={image.src} alt={image.alt[language]} fill sizes="(max-width: 760px) 82vw, 21vw" quality={90} />
+                <Image src={image.src} alt={image.alt[language]} fill sizes="(max-width: 760px) 82vw, 21vw" unoptimized />
               </button>
             )
           ))}

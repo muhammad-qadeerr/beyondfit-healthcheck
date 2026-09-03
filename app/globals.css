@@ -839,6 +839,7 @@ input:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 .studio-gallery__featured img,
 .studio-gallery__supporting img,
 .booking-studio-image img { object-fit: cover; transition: transform .55s ease; }
+.studio-gallery__featured img { animation: gallery-image-in .28s ease both; }
 .studio-gallery__featured::after,
 .booking-studio-image::after {
   content: "";
@@ -861,6 +862,11 @@ input:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
+}
+
+@keyframes gallery-image-in {
+  from { opacity: .45; }
+  to { opacity: 1; }
 }
 
 .strategy-section {
