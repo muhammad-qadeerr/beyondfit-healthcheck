@@ -70,7 +70,7 @@ const categories: StudioCategory[] = [
     },
     images: [
       { src: "/studio/gallery/lounge-1.webp", alt: { en: "Warm welcome in the BeyondFit lounge", nl: "Warm welkom in de BeyondFit-lounge" } },
-      { src: "/studio/gallery/lounge-2.webp", alt: { en: "Clients talking together in the lounge", nl: "Cliënten in gesprek in de lounge" } },
+      { src: "/studio/gallery/community-2.webp", alt: { en: "BeyondFit community sharing a relaxed moment together", nl: "BeyondFit-community deelt samen een ontspannen moment" } },
       { src: "/studio/gallery/lounge-3.webp", alt: { en: "BeyondFit communal lounge and kitchen", nl: "Gezamenlijke lounge en keuken van BeyondFit" } },
       { src: "/studio/gallery/lounge-4.webp", alt: { en: "Community gathering around the studio table", nl: "Samenkomst rond de tafel in de studio" } },
       { src: "/studio/gallery/lounge-5.webp", alt: { en: "Relaxed conversation after a session", nl: "Ontspannen gesprek na een sessie" } },
