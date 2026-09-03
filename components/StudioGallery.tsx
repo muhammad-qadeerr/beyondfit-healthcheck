@@ -48,16 +48,16 @@ const categories: StudioCategory[] = [
   },
   {
     id: "assessment",
-    label: { en: "Assessment & Treatment", nl: "Meting & behandeling" },
+    label: { en: "Coaching & Assessment", nl: "Coaching & meting" },
     description: {
-      en: "A professional setting for health reviews, movement assessment and physical support.",
-      nl: "Een professionele omgeving voor gezondheidsreviews, bewegingsmetingen en fysieke begeleiding.",
+      en: "Personal coaching that turns your health data and assessment results into a clear, practical plan.",
+      nl: "Persoonlijke coaching die je gezondheidsdata en meetresultaten vertaalt naar een helder, praktisch plan.",
     },
     images: [
-      { src: "/studio/gallery/assessment-1.webp", alt: { en: "BeyondFit treatment and assessment room", nl: "Behandel- en meetruimte van BeyondFit" } },
+      { src: "/studio/gallery/coaching-assessment.webp", alt: { en: "Coach explaining personal health assessment results to a client", nl: "Coach bespreekt persoonlijke meetresultaten met een cliënt" } },
       { src: "/studio/gallery/assessment-2.webp", alt: { en: "Coach reviewing personal health information with a client", nl: "Coach bespreekt persoonlijke gezondheidsinformatie met een cliënt" } },
       { src: "/studio/gallery/assessment-3.webp", alt: { en: "Personal results displayed during a health review", nl: "Persoonlijke resultaten tijdens een gezondheidsreview" } },
-      { src: "/studio/gallery/assessment-4.webp", alt: { en: "Client beginning a guided physical assessment", nl: "Cliënt begint aan een begeleide fysieke meting" } },
+      { src: "/studio/gallery/coaching-2.webp", alt: { en: "Coach guiding clients during a personal session", nl: "Coach begeleidt cliënten tijdens een persoonlijke sessie" } },
       { src: "/studio/gallery/assessment-5.webp", alt: { en: "Digital results used to guide the next step", nl: "Digitale resultaten als basis voor de volgende stap" } },
     ],
   },
