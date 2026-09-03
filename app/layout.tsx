@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@fontsource-variable/manrope";
+import "@fontsource-variable/montserrat";
 import "@fontsource/cormorant-garamond/600.css";
 import "./globals.css";
 

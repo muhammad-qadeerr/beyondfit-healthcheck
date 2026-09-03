@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { ArrowRight, BatteryCharging, CalendarCheck2, Clock3, Dumbbell, HeartPulse, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 
-import { BookingForm } from "@/components/BookingForm";
 import { CalendlyLink, CalendlyWidget } from "@/components/CalendlyBooking";
 import { Hero } from "@/components/Hero";
+import { StudioGallery } from "@/components/StudioGallery";
 import { Testimonials } from "@/components/Testimonials";
 import { TrustBadges } from "@/components/TrustBadges";
 
@@ -94,6 +94,7 @@ export function LandingPage() {
           ))}
         </div>
       </section>
+      <StudioGallery language={language} />
       <section className="strategy-section" data-reveal aria-labelledby="strategy-title">
         <p className="eyebrow">{english ? "The core difference" : "Het verschil"}</p>
         <h2 id="strategy-title">
@@ -131,27 +132,30 @@ export function LandingPage() {
         </div>
       </section>
       <TrustBadges language={language} />
-      <section className="conversion-banner" data-reveal>
-        <div>
-          <p className="eyebrow">{english ? "Health that supports everything else" : "Gezondheid die al het andere ondersteunt"}</p>
-          <h2>{english ? "Structure beats perfect weeks." : "Structuur verslaat perfecte weken."}<br /><em>{english ? "Build a system that adapts." : "Bouw een systeem dat meebeweegt."}</em></h2>
-        </div>
-        <CalendlyLink className="primary-link">{english ? "Start with clear insight" : "Start met helder inzicht"}<ArrowRight aria-hidden="true" size={18} /></CalendlyLink>
-      </section>
       <Testimonials language={language} />
       <section className="booking-section" id="boeken" data-reveal aria-label={english ? "Book your free Health Check" : "Boek je gratis Health Check"}>
         <div className="booking-intro">
-          <p className="eyebrow">{english ? "Your most valuable asset" : "Je meest waardevolle bezit"}</p>
-          <h2>
-            {english ? <>Always protect your most valuable asset—<em>you.</em></> : <>Bescherm altijd je meest waardevolle bezit—<em>jij.</em></>}
-          </h2>
-          <p>
-            {english
-              ? "Your health supports how you perform, lead and show up for the people who depend on you. Start by understanding where you stand."
-              : "Je gezondheid bepaalt hoe je presteert, leidinggeeft en er bent voor de mensen die op je rekenen. Begin met inzicht in waar je staat."}
-          </p>
+          <div className="booking-intro__copy">
+            <p className="eyebrow">{english ? "Your most valuable asset" : "Je meest waardevolle bezit"}</p>
+            <h2>
+              {english ? <>Always protect your most valuable asset—<em>you.</em></> : <>Bescherm altijd je meest waardevolle bezit—<em>jij.</em></>}
+            </h2>
+            <p>
+              {english
+                ? "Your health supports how you perform, lead and show up for the people who depend on you. Start by understanding where you stand."
+                : "Je gezondheid bepaalt hoe je presteert, leidinggeeft en er bent voor de mensen die op je rekenen. Begin met inzicht in waar je staat."}
+            </p>
+          </div>
+          <div className="booking-intro__cta">
+            <span>{english ? "Your next step" : "Jouw volgende stap"}</span>
+            <strong>{english ? "See what your health needs now." : "Ontdek wat je gezondheid nu nodig heeft."}</strong>
+            <p>{english ? "15 minutes. Personal insight. No obligation." : "15 minuten. Persoonlijk inzicht. Vrijblijvend."}</p>
+            <CalendlyLink className="primary-link">
+              {english ? "Book my complimentary Health Check" : "Boek mijn gratis Health Check"}
+              <ArrowRight aria-hidden="true" size={18} />
+            </CalendlyLink>
+          </div>
         </div>
-        <div className="booking-panel"><BookingForm language={language} /></div>
       </section>
       <CalendlyWidget language={language} />
       <footer>

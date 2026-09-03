@@ -4,8 +4,10 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { CalendarDays, X } from "lucide-react";
 
-const calendlyUrl =
-  "https://calendly.com/beyondfit_/15min?hide_gdpr_banner=1&background_color=fffaf5&text_color=332b28&primary_color=ff6900";
+
+
+
+const calendlyUrl = "https://calendly.com/beyondfit_/30min";
 const openEvent = "beyondfit:open-calendly";
 
 type CalendlyLinkProps = {
@@ -20,7 +22,7 @@ export function CalendlyLink({ children, className }: CalendlyLinkProps) {
   }
 
   return (
-    <a className={className} href="https://calendly.com/beyondfit_/15min" onClick={openCalendar}>
+    <a className={className} href="https://calendly.com/beyondfit_/30min" onClick={openCalendar}>
       {children}
     </a>
   );
